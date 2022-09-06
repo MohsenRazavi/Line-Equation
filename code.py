@@ -1,6 +1,4 @@
 from math import sqrt
-from select import kevent
-
 
 class Point:
     name = 'Point'
