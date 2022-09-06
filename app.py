@@ -1,6 +1,6 @@
-import objects, functions
+import objects, oprations
 
 def run():
-    pass
+    oprations.welcome()
 
 run()

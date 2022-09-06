@@ -1,4 +1,3 @@
-from curses.ascii import isdigit
 import os
 from unicodedata import name
 import objects
@@ -9,7 +8,8 @@ def clear_screen():
 
 def choose_opration(valid_choices):
     while True:
-        user_input = input("Choose opration:\n>>> ", end='')
+        print("Choose opration:\n>>> ", end='')
+        user_input = input()
         if user_input in valid_choices:
             return user_input
         print("Invalid input. Try again")
@@ -42,7 +42,8 @@ def get_point_info():
     while True:
         point_position = input().split()
         if point_position[0].isdigit() and point_position[1].isdigit():
-            point_name = input('Enter point name (optional) or press Enter to continue:\n>>> ', end='')
+            print('Enter point name (optional) or press Enter to continue:\n>>> ', end='')
+            point_name = input()
                  
             return tuple(int(p) for p in point_position)+(point_name, )
         else :
