@@ -140,6 +140,7 @@ def line_options(line, points):
             line = objects.Line(name = line_name, start_point = points[0], end_point = points[1])
         elif opt in ['Q', 'q']:
             quit()
+            break
         else:
             print("SOME THING WENT WRONG")
 
@@ -151,7 +152,7 @@ def get_line_name():
 
 def line_information(line, points):
     clear_screen()
-    print('<',10*'-','LINE INFORMATION', 10*'-','>', sep='')
+    print('<',10*'-',f'{line.name} INFORMATION', 10*'-','>', sep='')
     print('Given points : ')
     print_points(points)
     print(25*'=')

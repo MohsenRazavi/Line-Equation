@@ -26,14 +26,17 @@ class Line:
         these arguments should be instants of Point class
         """
         if 'name' in kwargs:
-            self.name = kwargs['name']
+            self.name = kwargs['name'].upper()
+        else:
+            self.name = 'LINE'
+
         self.s_point = kwargs['start_point']
         self.e_point = kwargs['end_point']
         self.length = self.__len__()
         self.equation = self.get_equation()
 
     def __str__(self):
-        return f'Line {self.equation} | length {self.length}'
+        return f'{self.name.upper()} {self.equation} | length {self.length}'
 
     def __len__(self):
         yy = (self.e_point.y - self.s_point.y) ** 2

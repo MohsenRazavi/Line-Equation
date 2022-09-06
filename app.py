@@ -1,4 +1,4 @@
-import objects, oprations
+import oprations
 
 def run():
     oprations.welcome()
