@@ -7,7 +7,7 @@ class Point:
         """
         pass x=  and y=
         """
-        if kwargs['name']:
+        if 'name' in kwargs:
             self.name = kwargs['name']
         self.x = kwargs['x']
         self.y = kwargs['y']
@@ -24,7 +24,7 @@ class Line:
         pass start_point=  and end_point=  to the constructor
         these arguments should be instants of Point class
         """
-        if kwargs['name']:
+        if 'name' in kwargs:
             self.name = kwargs['name']
         self.s_point = kwargs['start_point']
         self.e_point = kwargs['end_point']
@@ -37,7 +37,7 @@ class Line:
     def __len__(self):
         yy = (self.e_point.y - self.s_point.y) ** 2
         xx = (self.e_point.x - self.s_point.x) ** 2
-        return sqrt(yy + xx)
+        return int(sqrt(yy + xx))
 
     def get_equation(self):
         self.m = (self.e_point.y -
@@ -72,7 +72,7 @@ class Line:
 
 # l = Line(start_point = p1, end_point=p2)
 
-# print(l)
+# # print(l)
 # print(l.__len__())
 # print(len(l))
 # print(l.get_line_gradient())
