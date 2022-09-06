@@ -16,6 +16,11 @@ class Point:
     def __str__(self):
         return f'{self.name}({self.x}, {self.y})'
 
+    def __eq__(self, other):
+        
+        return self.x == other.x and self.y == other.y
+        
+
 
 class Line:
     name = 'Line'

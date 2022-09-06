@@ -70,18 +70,20 @@ def get_point_info():
 def get_points():
     clear_screen()
     print(10*'-', 'GETTING POINTS', 10*'-')
+    while True:
+        list_of_points = ()
+        for counter in ['first', 'second']:
+            print(f'Enter position of {counter} point(x y) :')
+            point_info = get_point_info()
+            point = objects.Point(
+                x=point_info[0], y=point_info[1], name=point_info[2])
+            list_of_points += (point, )
 
-    list_of_points = ()
-    for counter in ['first', 'second']:
-        print(f'Enter position of {counter} point(x y) :')
-        point_info = get_point_info()
-        point = objects.Point(
-            x=point_info[0], y=point_info[1], name=point_info[2])
-        list_of_points += (point, )
-
-    if list_of_points[0] == list_of_points[1]:
-        print("WARNING no line exists between same points")
-    return list_of_points
+        if list_of_points[0] == list_of_points[1]:
+            print("No line exists between same points")
+            print('Try again')
+        else:
+            return list_of_points
 
 
 def print_points(points):
