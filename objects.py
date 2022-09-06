@@ -38,7 +38,7 @@ class Line:
     def __len__(self):
         yy = (self.e_point.y - self.s_point.y) ** 2
         xx = (self.e_point.x - self.s_point.x) ** 2
-        return int(sqrt(yy + xx))
+        return sqrt(yy + xx)
 
     def get_equation(self):
         self.m = (self.e_point.y -
@@ -62,5 +62,5 @@ class Line:
             self.y_intercept*(self.e_point.x - self.s_point.x)
         return area
 
-    def get_line_gradient(self):
+    def get_gradient(self):
         return self.m
