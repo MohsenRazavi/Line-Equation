@@ -64,13 +64,13 @@ class Line:
     def get_line_gradient(self):
         return self.m
 
-p1 = Point(x=0, y=2)
-p2 = Point(x=10, y=5)
-p3 = Point(x=10, y=3.5)
+# p1 = Point(x=0, y=2)
+# p2 = Point(x=10, y=5)
+# p3 = Point(x=10, y=3.5)
 
 
 
-l = Line(start_point = p1, end_point=p2)
+# l = Line(start_point = p1, end_point=p2)
 
 # print(l)
 # print(l.__len__())
@@ -78,5 +78,5 @@ l = Line(start_point = p1, end_point=p2)
 # print(l.get_line_gradient())
 # print(l.get_equation())
 # print(l.area_between_line_and_x_axis())
-print(l.is_point_on_line(p2))
-print(l.is_point_on_line(p3))
+# print(l.is_point_on_line(p2))
+# print(l.is_point_on_line(p3))
