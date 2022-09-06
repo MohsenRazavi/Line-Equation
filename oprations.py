@@ -34,26 +34,39 @@ def help():
     print('finished !')
     print('you can see all informations about the line which is between these 2 points')
     # method names
+    print("Enter 'Q' or press Enter to start :\n>>> ", end='')
     choose_opration(['', 'Q', 'q'])
     start_app()
 
 
 def get_point_info():
+    status = True
     while True:
-        point_position = input().split()
-        if point_position[0].isdigit() and point_position[1].isdigit():
-            print('Enter point name (optional) or press Enter to continue:\n>>> ', end='')
-            point_name = input()
-                 
-            return tuple(int(p) for p in point_position)+(point_name, )
+        point_position = input('>>> ').split()
+        if not point_position[0].isalpha() and not point_position[1].isalpha():
+            for s in """!@#$%^&*()=/*|\\}{]['"`<>?""":
+                if s in point_position[0] or s in point_position[1]:
+                    status = False
+                    print('Invalid input. Try again')
+                    break
+            else :
+                status = True
+
+            if status:
+                break
+                        
         else :
             print('Invalid input. Try again')
+
+    print('Enter point name (optional) or press Enter to continue:')
+    point_name = input('>>> ')     
+    return tuple(float(p) for p in point_position)+(point_name, )
 
 
 def get_points():
     list_of_points = ()
     for counter in ['first', 'second']:
-            print(f'Enter position of {counter} point(x y) :\n>>> ', end='')
+            print(f'Enter position of {counter} point(x y) :')
             point_info = get_point_info()
             point = objects.Point(x=point_info[0], y=point_info[1], name=point_info[2])
             list_of_points += (point, )
@@ -65,6 +78,9 @@ def start_app():
     clear_screen()
     print(10*'-','LINE EQUATION', 10*'-')
     points = get_points()
+    for i in points:
+        print(i)
+
 
 
     
