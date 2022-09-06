@@ -1,13 +1,16 @@
 from math import sqrt
+from select import kevent
 
 
 class Point:
     name = 'Point'
 
-    def __init__(self,**kwargs):
+    def __init__(self, **kwargs):
         """
         pass x=  and y=
         """
+        if kwargs['name']:
+            self.name = kwargs['name']
         self.x = kwargs['x']
         self.y = kwargs['y']
 
@@ -17,11 +20,14 @@ class Point:
 
 class Line:
     name = 'Line'
+
     def __init__(self, **kwargs):
         """
-        pass start_point=  and end_point=  to the constructor 
+        pass start_point=  and end_point=  to the constructor
         these arguments should be instants of Point class
         """
+        if kwargs['name']:
+            self.name = kwargs['name']
         self.s_point = kwargs['start_point']
         self.e_point = kwargs['end_point']
         self.length = self.__len__()
@@ -46,7 +52,7 @@ class Line:
     def is_point_on_line(self, point):
         if point.x > self.e_point.x or point.x < self.s_point.x :
             return False
-            
+
         status = point.y == self.m*point.x + self.y_intercept
         if status:
             return True
