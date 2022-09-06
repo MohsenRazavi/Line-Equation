@@ -1,6 +1,7 @@
 import os
 import objects
 
+
 def clear_screen():
     os.system('cls')
 
@@ -27,12 +28,16 @@ def welcome():
 
 def help():
     clear_screen()
-    print(10*'-','HELP', 10*'-')
+    print(10*'-', 'HELP', 10*'-')
     print("how to use :")
-    print('1- give 2 points to the program')
-    print('finished !')
-    print('you can see all informations about the line which is between these 2 points')
-    # method names
+    print("""1- give 2 points to the program
+    finished !
+    you can see all informations about the line which is between these 2 points
+    in the opend screen Enter 'L' to see length of line, 'G' to see gradient of line, 'A' to see area between line and x axis and if you want to check if a special point is on line or not enter 'P'
+    you can also enter 'N' to check new line, or 'Q' to quit app
+    developer : Mohsen Razavi
+    follow on github : https://github.com/MohsenRazavi/Line-Equation """)
+    
     print("Enter 'Q' or press Enter to start :\n>>> ", end='')
     choose_opration(['', 'Q', 'q'])
     start_app()
@@ -48,31 +53,32 @@ def get_point_info():
                     status = False
                     print('Invalid input. Try again')
                     break
-            else :
+            else:
                 status = True
 
             if status:
                 break
-                        
-        else :
+
+        else:
             print('Invalid input. Try again')
 
     print('Enter point name (optional) or press Enter to continue:')
-    point_name = input('>>> ')     
+    point_name = input('>>> ')
     return tuple(float(p) for p in point_position)+(point_name, )
 
 
 def get_points():
     clear_screen()
-    print(10*'-','GETTING POINTS', 10*'-')
-    
+    print(10*'-', 'GETTING POINTS', 10*'-')
+
     list_of_points = ()
     for counter in ['first', 'second']:
-            print(f'Enter position of {counter} point(x y) :')
-            point_info = get_point_info()
-            point = objects.Point(x=point_info[0], y=point_info[1], name=point_info[2])
-            list_of_points += (point, )
-    
+        print(f'Enter position of {counter} point(x y) :')
+        point_info = get_point_info()
+        point = objects.Point(
+            x=point_info[0], y=point_info[1], name=point_info[2])
+        list_of_points += (point, )
+
     if list_of_points[0] == list_of_points[1]:
         print("WARNING no line exists between same points")
     return list_of_points
@@ -86,15 +92,18 @@ def print_points(points):
 def line_length(line):
     print(line.__len__())
 
+
 def line_gradient(line):
     print(line.get_gradient())
+
 
 def area_between_line_and_x_axis(line):
     print(line.area_between_line_and_x_axis())
 
+
 def check_point_in_line(line, points):
     clear_screen()
-    print(10*'-','CHECK POINTS IN LINE', 10*'-', sep='')
+    print(10*'-', 'CHECK POINTS IN LINE', 10*'-', sep='')
     print('Given points : ')
     print_points(points)
     print(25*'=')
@@ -103,7 +112,8 @@ def check_point_in_line(line, points):
     while True:
         print(f'Enter position of point(x y) :')
         point_info = get_point_info()
-        point = objects.Point(x=point_info[0], y=point_info[1], name=point_info[2])
+        point = objects.Point(
+            x=point_info[0], y=point_info[1], name=point_info[2])
         status = line.is_point_on_line(point)
         if status:
             print(f"The line {line} contaions the point {point}")
@@ -124,7 +134,8 @@ def line_options(line, points):
     print("Enter 'L' to see length of line, 'G' to see gradient of line, 'A' to see area between line and x axis and if you want to check if a special point is on line or not enter 'P' :")
     print("Enter 'N' to check new line, or 'Q' to quit app :")
     while True:
-        opt = choose_opration(['L', 'l', 'G', 'g', 'A', 'a', 'P', 'p', 'N', 'n', 'Q', 'q'])
+        opt = choose_opration(
+            ['L', 'l', 'G', 'g', 'A', 'a', 'P', 'p', 'N', 'n', 'Q', 'q'])
 
         if opt in ['L', 'l']:
             line_length(line)
@@ -137,22 +148,24 @@ def line_options(line, points):
         elif opt in ['N', 'n']:
             points = get_points()
             line_name = get_line_name()
-            line = objects.Line(name = line_name, start_point = points[0], end_point = points[1])
+            line = objects.Line(
+                name=line_name, start_point=points[0], end_point=points[1])
         elif opt in ['Q', 'q']:
             quit()
             break
         else:
             print("SOME THING WENT WRONG")
 
+
 def get_line_name():
     print('Enter line name (optional) or press Enter to continue:')
-    line_name = input('>>> ') 
+    line_name = input('>>> ')
     return line_name
 
 
 def line_information(line, points):
     clear_screen()
-    print('<',10*'-',f'{line.name} INFORMATION', 10*'-','>', sep='')
+    print('<', 10*'-', f'{line.name} INFORMATION', 10*'-', '>', sep='')
     print('Given points : ')
     print_points(points)
     print(25*'=')
@@ -160,12 +173,10 @@ def line_information(line, points):
     print(25*'-')
     line_options(line, points)
 
+
 def start_app():
     points = get_points()
     line_name = get_line_name()
-    line = objects.Line(name = line_name, start_point = points[0], end_point = points[1])
+    line = objects.Line(
+        name=line_name, start_point=points[0], end_point=points[1])
     line_information(line, points)
-
-
-
-    
